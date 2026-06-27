@@ -1,0 +1,15 @@
+{
+  "case_no": "2024京04民终154",
+  "title": "某公司诉某平台算法推荐侵权案",
+  "court": "北京互联网法院",
+  "court_level": "basic",
+  "court_region": "北京",
+  "judge_name": "边法官",
+  "trial_procedure": "second",
+  "case_category_1": "民事",
+  "case_category_2": "网络侵权责任纠纷",
+  "case_category_3": "算法推荐侵权",
+  "judgment_date": "2024-08-28",
+  "ruling_abstract": "平台通过算法推荐侵权内容的——与上传者承担连带责任。",
+  "summary": "短视频平台通过算法将侵权视频推荐至热门导致侵权视频浏览量爆炸。法院判决平台连带赔偿。"
+}

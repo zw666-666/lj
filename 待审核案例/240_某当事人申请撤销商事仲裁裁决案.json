@@ -1,0 +1,15 @@
+{
+  "case_no": "2024京04民特240",
+  "title": "某当事人申请撤销商事仲裁裁决案",
+  "court": "北京市第四中级人民法院",
+  "court_level": "intermediate",
+  "court_region": "北京",
+  "judge_name": "蓝法官",
+  "trial_procedure": "first",
+  "case_category_1": "民事",
+  "case_category_2": "仲裁程序纠纷",
+  "case_category_3": "申请撤销仲裁裁决",
+  "judgment_date": "2024-11-18",
+  "ruling_abstract": "仲裁裁决的事项超出仲裁协议范围——部分撤销。",
+  "summary": "当事人在合同仲裁条款中仅约定质量争议可仲裁。仲裁庭却将包括货款支付在内的全部争议一并裁决。法院部分撤销。"
+}

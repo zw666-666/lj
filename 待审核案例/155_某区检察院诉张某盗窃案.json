@@ -1,0 +1,15 @@
+{
+  "case_no": "2024浙01刑初124",
+  "title": "某区检察院诉张某盗窃案",
+  "court": "杭州市中级人民法院",
+  "court_level": "intermediate",
+  "court_region": "浙江",
+  "judge_name": "齐法官",
+  "trial_procedure": "first",
+  "case_category_1": "刑事",
+  "case_category_2": "侵犯财产罪",
+  "case_category_3": "盗窃罪",
+  "judgment_date": "2024-03-12",
+  "ruling_abstract": "利用技术手段盗窃虚拟货币——虚拟货币属于刑法保护的财产。",
+  "summary": "张某利用计算机技术入侵他人数字钱包盗窃比特币等虚拟货币价值约80万元。法院认定虚拟货币属于盗窃罪对象。"
+}

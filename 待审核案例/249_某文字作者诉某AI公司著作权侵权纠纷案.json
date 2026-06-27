@@ -1,0 +1,15 @@
+{
+  "case_no": "2024京02民终249",
+  "title": "某文字作者诉某AI公司著作权侵权纠纷案",
+  "court": "北京市第二中级人民法院",
+  "court_level": "intermediate",
+  "court_region": "北京",
+  "judge_name": "袁法官",
+  "trial_procedure": "second",
+  "case_category_1": "民事",
+  "case_category_2": "著作权权属侵权纠纷",
+  "case_category_3": "著作权侵权",
+  "judgment_date": "2024-07-08",
+  "ruling_abstract": "AI大模型未经许可使用他人文字作品训练——构成著作权侵权。",
+  "summary": "某知名作家的多部小说被AI公司在未授权情况下用于训练其大语言模型。法院首次对AI训练数据使用的著作权保护作出判决。"
+}

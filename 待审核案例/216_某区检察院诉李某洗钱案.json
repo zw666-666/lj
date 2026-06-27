@@ -1,0 +1,15 @@
+{
+  "case_no": "2024京01刑初216",
+  "title": "某区检察院诉李某洗钱案",
+  "court": "北京市第一中级人民法院",
+  "court_level": "intermediate",
+  "court_region": "北京",
+  "judge_name": "尤法官",
+  "trial_procedure": "first",
+  "case_category_1": "刑事",
+  "case_category_2": "破坏金融管理秩序罪",
+  "case_category_3": "洗钱罪",
+  "judgment_date": "2024-06-18",
+  "ruling_abstract": "将受贿所得通过虚拟货币转换——构成洗钱罪。",
+  "summary": "李某帮助其亲属（受贿官员）将受贿所得2000万元通过购买比特币等方式进行跨境转移。"
+}
