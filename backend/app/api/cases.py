@@ -2,7 +2,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.core.database import get_db
-from app.core.security import get_current_user, get_current_user_optional
+from app.core.security import get_current_user_optional
 from app.models.user import User
 from app.models.case import Case, DisputeFocus, LegalRule, LegalEntity, CaseRelation
 from app.schemas.case import CaseDetailResponse, RelatedCaseResponse, DisputeFocusResponse, LegalRuleResponse

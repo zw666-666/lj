@@ -40,7 +40,7 @@ class Settings(BaseSettings):
     ALIPAY_RETURN_URL: str = ""
     ALIPAY_SANDBOX: bool = True  # 沙箱模式
     ALIPAY_GATEWAY: str = "https://openapi-sandbox.dl.alipaydev.com/gateway.do"
-    ALIPAY_CALLBACK_URL: str = "http://localhost:8000/api/auth/alipay/callback"
+    ALIPAY_CALLBACK_URL: str = ""
     FRONTEND_URL: str = "http://localhost:3000"
     PUBLIC_BASE_URL: str = ""
 

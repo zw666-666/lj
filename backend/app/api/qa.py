@@ -1,5 +1,4 @@
 """法律智能问答接口（SSE 流式，直接接入 DeepSeek）"""
-import asyncio
 import json
 import httpx
 from fastapi import APIRouter, Depends, Request, HTTPException
@@ -7,7 +6,7 @@ from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 from app.core.database import SessionLocal, get_db
 from app.core.config import settings
-from app.core.security import get_current_user, get_current_premium_optional
+from app.core.security import get_current_user
 from app.models.user import User
 from app.models.user_content import QASession, QAMessage
 from app.services.usage_service import UsageService

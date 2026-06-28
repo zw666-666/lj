@@ -11,17 +11,14 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
     "axios": "^1.6.5",
-    "d3": "^7.8.5",
     "echarts": "^5.4.3",
     "element-plus": "^2.5.4",
-    "marked": "^11.2.0",
     "ogl": "^1.0.11",
     "pinia": "^2.1.7",
     "postprocessing": "^6.39.1",
     "qrcode": "^1.5.4",
     "three": "^0.185.0",
     "vue": "^3.4.0",
-    "vue-echarts": "^6.6.9",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {

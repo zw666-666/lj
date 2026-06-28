@@ -1,6 +1,5 @@
 """律镜 LawMirror — FastAPI 应用入口"""
 import asyncio
-import re
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -104,6 +103,8 @@ app.add_middleware(
         "http://127.0.0.1:80",
         "http://192.168.10.27:3000",
         "http://192.168.10.27:80",
+        "http://120.27.143.225",
+        "http://120.27.143.225:80",
     ],
     allow_origin_regex=r"^https?://([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+(:\d+)?$",
     allow_credentials=True,

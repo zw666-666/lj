@@ -1,9 +1,7 @@
 """AI 加工流水线服务层"""
-import json
 import logging
 from datetime import datetime, timezone
 from sqlalchemy.orm import Session
-from app.core.config import settings
 from app.models.case import Case, ProcessingLog
 
 logger = logging.getLogger(__name__)

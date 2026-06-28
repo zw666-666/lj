@@ -1,6 +1,5 @@
 """支付宝支付服务 —— 签名、验签、统一下单"""
 import json
-import hashlib
 import base64
 import uuid
 from datetime import datetime
@@ -8,7 +7,7 @@ from urllib.parse import urlencode, parse_qs
 from typing import Dict, Optional, Tuple
 
 from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.asymmetric import rsa, padding
+from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives.serialization import load_pem_private_key, load_pem_public_key
 
 from app.core.config import settings

@@ -5,7 +5,7 @@ from sqlalchemy import func, text
 from app.core.database import get_db
 from app.core.security import get_current_admin_user
 from app.models.user import RefreshToken, User
-from app.models.case import Case, ProcessingLog, CaseRelation
+from app.models.case import Case, CaseRelation
 
 router = APIRouter(prefix="/api/admin", tags=["管理员"])
 

@@ -3,7 +3,6 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from sqlalchemy import or_, case as sql_case
 from app.core.database import get_db
-from app.core.security import get_current_user
 from app.models.user import User
 from app.models.case import Case
 from app.schemas.case import CaseSearchRequest, CaseSearchResponse, CaseCardResponse

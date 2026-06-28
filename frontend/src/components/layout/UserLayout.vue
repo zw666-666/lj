@@ -4,9 +4,8 @@ import { useRouter, useRoute } from "vue-router"
 import { useAuthStore } from "@/stores/auth"
 import { useCompareBasketStore } from "@/stores/compareBasket"
 import {
-  Search, Files, ChatDotSquare, User,
-  ArrowDown, Setting, SwitchButton, Star, Edit, Delete, Plus,
-  Expand, Fold,
+  Search, Files, ChatDotSquare,
+  ArrowDown, Setting, SwitchButton, Star, Edit, Plus,
 } from "@element-plus/icons-vue"
 import VipBadge from "@/components/common/VipBadge.vue"
 import api from "@/api/client"

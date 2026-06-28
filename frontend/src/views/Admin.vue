@@ -2,7 +2,7 @@
 import { ref, computed, watch, onMounted } from "vue"
 import api from "@/api/client"
 import { ElMessage, ElMessageBox } from "element-plus"
-import { Refresh, Check, Edit, Close, DataAnalysis, Document, User, Plus, Upload, Delete } from "@element-plus/icons-vue"
+import { Refresh, User, Plus, Upload, Delete } from "@element-plus/icons-vue"
 import CountUp from "@/components/common/CountUp.vue"
 import GridScan from "@/components/common/GridScan.vue"
 import { useAuthStore } from "@/stores/auth"

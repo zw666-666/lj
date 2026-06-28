@@ -4,8 +4,8 @@ import { useRoute, useRouter } from "vue-router"
 import api from "@/api/client"
 import { useAuthStore } from "@/stores/auth"
 import {
-  ArrowLeft, Star, Share, ArrowDown, ArrowUp,
-  Clock, View, Collection, Notebook, Link, Loading, Switch,
+  ArrowLeft, Star, Share, ArrowDown,
+  View, Notebook, Loading, Switch,
 } from "@element-plus/icons-vue"
 import { ElMessage, ElMessageBox } from "element-plus"
 import { useSearchStore } from "@/stores/search"

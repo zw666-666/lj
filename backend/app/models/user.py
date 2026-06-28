@@ -1,6 +1,6 @@
 """用户模型"""
 from datetime import datetime, timezone
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, Text, func
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, Text
 from app.core.database import Base
 
 

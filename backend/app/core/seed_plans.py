@@ -36,7 +36,6 @@ DEFAULT_PLANS = [
 
 def seed_plans():
     """向数据库插入默认订阅方案（更新价格或新增方案）"""
-    from app.models.subscription import PaymentOrder, Subscription
     db = SessionLocal()
     try:
         for plan_data in DEFAULT_PLANS:

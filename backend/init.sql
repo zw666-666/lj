@@ -7,14 +7,19 @@ CREATE TABLE IF NOT EXISTS users (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     phone VARCHAR(20) UNIQUE COMMENT '手机号',
     email VARCHAR(255) UNIQUE COMMENT '邮箱',
-    password_hash VARCHAR(255) NOT NULL COMMENT '密码哈希',
+    password_hash VARCHAR(255) NULL COMMENT '密码哈希(OAuth用户可为空)',
+    oauth_provider VARCHAR(20) COMMENT 'OAuth提供商',
+    oauth_id VARCHAR(64) UNIQUE COMMENT 'OAuth用户ID',
     nickname VARCHAR(100) COMMENT '昵称',
     avatar_url VARCHAR(500) COMMENT '头像URL',
     license_no VARCHAR(50) COMMENT '执业证号',
     law_firm VARCHAR(200) COMMENT '所在律所',
     expertise TEXT COMMENT '擅长领域(JSON数组)',
     role ENUM('normal', 'premium', 'admin') DEFAULT 'normal' COMMENT '用户角色',
-    trial_end_date DATETIME COMMENT '试用期结束日期',
+    subscription_expires_at DATETIME COMMENT '订阅到期时间',
+    lifetime_export_count INT DEFAULT 0 COMMENT '终身导出次数',
+    search_count INT DEFAULT 0 COMMENT '搜索次数',
+    read_count INT DEFAULT 0 COMMENT '阅读次数',
     is_locked BOOLEAN DEFAULT FALSE COMMENT '是否锁定',
     login_attempts INT DEFAULT 0 COMMENT '连续登录失败次数',
     locked_until DATETIME COMMENT '锁定到期时间',
@@ -310,6 +315,15 @@ CREATE TABLE IF NOT EXISTS usage_daily (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- users 表字段追加（如果表已存在则修改）
+-- ===== users 表字段追加（仅用于从旧版本升级） =====
+-- 全新安装无需执行以下语句，CREATE TABLE 已包含全部列
+-- 从旧版本升级时手动执行：
+--   docker exec lj-mysql mysql -u root -p$MYSQL_ROOT_PASSWORD lvjing < upgrade_users.sql
+--
+-- ALTER TABLE users ADD COLUMN oauth_provider VARCHAR(20) COMMENT 'OAuth提供商';
+-- ALTER TABLE users ADD COLUMN oauth_id VARCHAR(64) COMMENT 'OAuth用户ID';
+-- ALTER TABLE users MODIFY COLUMN password_hash VARCHAR(255) NULL COMMENT '密码哈希';
 -- ALTER TABLE users ADD COLUMN subscription_expires_at DATETIME COMMENT '订阅到期时间';
 -- ALTER TABLE users ADD COLUMN lifetime_export_count INT DEFAULT 0 COMMENT '终身导出次数';
+-- ALTER TABLE users ADD COLUMN search_count INT DEFAULT 0 COMMENT '搜索次数';
+-- ALTER TABLE users ADD COLUMN read_count INT DEFAULT 0 COMMENT '阅读次数';

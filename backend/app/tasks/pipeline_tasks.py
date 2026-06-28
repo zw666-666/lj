@@ -1,5 +1,4 @@
 """AI 加工流水线 Celery 任务"""
-import asyncio
 import logging
 from app.tasks.celery_app import celery_app
 from app.core.database import SessionLocal

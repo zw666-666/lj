@@ -36,8 +36,6 @@ const scanStarts: number[] = []
 const lookTarget = new THREE.Vector2(0, 0)
 const lookCurrent = new THREE.Vector2(0, 0)
 const lookVel = new THREE.Vector2(0, 0)
-const tiltCurrent = 0; const tiltVel = { v: 0 }; const tiltTarget = 0
-const yawCurrent = 0; const yawVel = { v: 0 }; const yawTarget = 0
 
 const s = Math.min(1, Math.max(0, props.sensitivity))
 const skewScale = 0.06 + (0.2 - 0.06) * s

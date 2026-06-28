@@ -97,17 +97,9 @@ export const useAuthStore = defineStore("auth", () => {
     sessionStorage.removeItem("refresh_token")
   }
 
-  // 订阅到期相关计算
-  const daysUntilExpiry = computed(() => {
-    if (!user.value?.subscription_expires_at) return null
-    const now = new Date()
-    const exp = new Date(user.value.subscription_expires_at)
-    return Math.ceil((exp.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
-  })
-
   return {
     token, refreshToken, user, isLoggedIn, isAdmin, isPremium,
-    subscriptionStatus, subscriptionExpiresAt, exportRemaining, daysUntilExpiry,
+    subscriptionStatus, subscriptionExpiresAt, exportRemaining,
     switchingAccount, needSetup,
     login, loginWithSms, setupAccount, fetchProfile, tryFetchProfile, setTokens, logout,
   }

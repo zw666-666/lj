@@ -17,9 +17,6 @@ router = APIRouter(prefix="/api/payment/alipay", tags=["支付宝支付"])
 
 NOTIFY_URL = settings.ALIPAY_NOTIFY_URL or settings.ALIPAY_CALLBACK_URL.replace("callback", "notify")
 
-# 内存缓存：仅用于异步通知快速查找订单（数据库才是真正的来源）
-_pending_orders: dict[str, dict] = {}
-
 # 缓存 AliPay 实例，避免每次请求重新解析 RSA 密钥
 _alipay_instance: AliPay | None = None
 
@@ -120,12 +117,6 @@ def create_payment(
                 )
                 db.add(order)
                 db.commit()
-                _pending_orders[out_trade_no] = {
-                    "user_id": current_user.id,
-                    "plan_id": db_plan.id,
-                    "plan_type": db_plan.plan_type,
-                    "days": 365 if db_plan.plan_type == "yearly" else 30,
-                }
                 return {
                     "qr_code": result.get("qr_code", ""),
                     "out_trade_no": out_trade_no,
@@ -158,7 +149,6 @@ def create_payment(
 def check_payment(out_trade_no: str = "", current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     """轮询支付状态
 
-    修复：不再依赖内存 _pending_orders。
     1) 查 DB 订单是否已 paid（异步通知先到达时已写入）
     2) 否则查询支付宝 API（这是真实数据来源）
     3) 查到 TRADE_SUCCESS 时升级用户并更新订单状态
@@ -194,8 +184,6 @@ def check_payment(out_trade_no: str = "", current_user: User = Depends(get_curre
             order.alipay_trade_no = result.get("trade_no", "")
             order.paid_at = _utcnow()
             db.commit()
-        # 清理内存缓存
-        _pending_orders.pop(out_trade_no, None)
         return {"paid": True, "detail": "支付成功"}
 
     if result.get("trade_status") == "TRADE_CLOSED":
@@ -203,7 +191,6 @@ def check_payment(out_trade_no: str = "", current_user: User = Depends(get_curre
         if order.status == "pending":
             order.status = "expired"
             db.commit()
-        _pending_orders.pop(out_trade_no, None)
         return {"paid": False, "detail": "支付已取消"}
 
     return {"paid": False, "detail": result.get("msg", "等待支付")}
@@ -250,10 +237,7 @@ async def alipay_notify(request: Request, db: Session = Depends(get_db)):
                 order.alipay_trade_no = data.get("trade_no", "")
                 order.paid_at = _utcnow()
                 db.commit()
-        # 清理内存缓存
-        _pending_orders.pop(out_trade_no, None)
-
-    elif trade_status == "TRADE_CLOSED":
+elif trade_status == "TRADE_CLOSED":
         # 用户在支付宝端取消了支付，标记订单为已关闭
         order = db.query(PaymentOrder).filter(
             PaymentOrder.order_no == out_trade_no,
@@ -261,6 +245,5 @@ async def alipay_notify(request: Request, db: Session = Depends(get_db)):
         if order and order.status == "pending":
             order.status = "expired"
             db.commit()
-        _pending_orders.pop(out_trade_no, None)
 
     return PlainTextResponse("success")

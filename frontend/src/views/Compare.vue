@@ -3,7 +3,7 @@ defineOptions({ name: 'CompareView' })
 import { ref, computed, watch, onMounted, onActivated, onUnmounted } from "vue"
 import { useRouter } from "vue-router"
 import api from "@/api/client"
-import { Plus, Delete, Search, Download, Switch, Star } from "@element-plus/icons-vue"
+import { Plus, Delete, Download, Switch, Star } from "@element-plus/icons-vue"
 import { ElMessage } from "element-plus"
 import { useAuthStore } from "@/stores/auth"
 import { useCompareBasketStore, type CaseItem as BasketCaseItem } from "@/stores/compareBasket"
