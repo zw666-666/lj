@@ -237,7 +237,7 @@ async def alipay_notify(request: Request, db: Session = Depends(get_db)):
                 order.alipay_trade_no = data.get("trade_no", "")
                 order.paid_at = _utcnow()
                 db.commit()
-elif trade_status == "TRADE_CLOSED":
+    elif trade_status == "TRADE_CLOSED":
         # 用户在支付宝端取消了支付，标记订单为已关闭
         order = db.query(PaymentOrder).filter(
             PaymentOrder.order_no == out_trade_no,
