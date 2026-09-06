@@ -113,11 +113,6 @@ npm run dev
 - `scripts/reindex_es.py`：把 MySQL 中的案例同步到 Elasticsearch，重建 `cases` 索引。
 - `scripts/vision_describe.py`：调用豆包视觉模型描述图片（需设置 `VISION_API_KEY` 等环境变量）。
 
-## 相关文档
-
-- [项目技术实现讲解](./项目技术实现讲解.md)
-- [律镜项目面试问答](./律镜项目面试问答.md)
-
 ## 安全说明
 
 - 生产部署前务必修改 `.env.example` 中的所有默认值，尤其是 `JWT_SECRET_KEY` 与各数据库密码。
