@@ -6,7 +6,12 @@ import { User, Lock, Message, Loading } from "@element-plus/icons-vue"
 import type { FormInstance, FormRules } from "element-plus"
 import Plasma from "@/components/common/Plasma.vue"
 import { ElMessage } from "element-plus"
-import { toDataURL } from "qrcode"
+// qrcode 动态导入，避免 SSR 和 DOM 未就绪时报错
+let toDataURL: any = null
+async function getQRCode() {
+  if (!toDataURL) { const m = await import("qrcode"); toDataURL = m.toDataURL }
+  return toDataURL
+}
 
 const router = useRouter()
 const route = useRoute()
@@ -96,7 +101,7 @@ async function handleSubmit() {
       const { default: api } = await import("@/api/client")
       await api.post("/auth/register", body)
       await auth.login(form.account, form.password)
-      router.replace("/home?new_user=1")
+      router.replace("/landing?new_user=1")
     }
   } catch (e: any) {
     const resp = e.response

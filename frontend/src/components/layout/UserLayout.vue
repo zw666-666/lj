@@ -5,7 +5,7 @@ import { useAuthStore } from "@/stores/auth"
 import { useCompareBasketStore } from "@/stores/compareBasket"
 import {
   Search, Files, ChatDotSquare,
-  ArrowDown, Setting, SwitchButton, Star, Edit, Plus,
+  ArrowDown, Setting, SwitchButton, Star, Edit, Plus, User,
 } from "@element-plus/icons-vue"
 import VipBadge from "@/components/common/VipBadge.vue"
 import api from "@/api/client"

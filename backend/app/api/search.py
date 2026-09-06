@@ -7,7 +7,7 @@ from app.models.user import User
 from app.models.case import Case
 from app.schemas.case import CaseSearchRequest, CaseSearchResponse, CaseCardResponse
 from app.services.search_service import semantic_search_es, expand_query, fts5_search_subquery, fts5_fulltext_search
-from app.core.security import get_current_user_optional
+from app.core.security import get_current_user, get_current_user_optional
 
 router = APIRouter(prefix="/api/search", tags=["检索"])
 
@@ -266,9 +266,9 @@ async def semantic_search(
 
     # 排序
     if req.sort_by == "date":
-        base_q = base_q.order_by(Case.judgment_date.desc().nullslast())
+        base_q = base_q.order_by(Case.judgment_date.desc())
     else:
-        base_q = base_q.order_by(Case.judgment_date.desc().nullslast())
+        base_q = base_q.order_by(Case.judgment_date.desc())
 
     # ---- 无结果降级：展示同案由案例 ----
     fallback_cases = []
@@ -311,5 +311,5 @@ async def semantic_search(
 
 
 @router.get("/history")
-def search_history(current_user: User = Depends(get_current_user)):
+async def search_history(current_user: User = Depends(get_current_user)):
     return {"history": []}

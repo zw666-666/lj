@@ -51,8 +51,8 @@ async function unpublishCase() {
     caseData.value.processing_status = "unpublished"
     searchStore.triggerRefresh()  // 通知检索页刷新
     ElMessage.success("已下架，返回检索页将不再显示此案例")
-  } catch {
-    ElMessage.error("下架失败")
+  } catch (error: any) {
+    ElMessage.error(error?.response?.data?.detail || "下架失败，请稍后重试")
   }
 }
 

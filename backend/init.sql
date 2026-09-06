@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS cases (
     summary TEXT COMMENT 'AI案情概要',
     ruling_abstract TEXT COMMENT 'AI裁判要旨',
     tags JSON COMMENT '主题标签',
-    processing_status ENUM('pending','summarizing','classifying','extracting','linking','completed','failed')
+    processing_status ENUM('pending','summarizing','classifying','extracting','linking','completed','failed','unpublished')
         DEFAULT 'pending' COMMENT 'AI处理状态',
     confidence_score DECIMAL(5,4) DEFAULT 0 COMMENT 'AI置信度',
     is_deleted BOOLEAN DEFAULT FALSE,

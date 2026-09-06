@@ -47,7 +47,7 @@ function handleClickOutside(e: MouseEvent) {
 
 async function loadSearchHistory() {
   try {
-    const res = await api.get("/workspace/search-history")
+    const res = await api.get("/user/search-history")
     searchHistory.value = res.data.map((item: any) => item.detail).filter(Boolean)
   } catch {
     const saved = localStorage.getItem(historyKey.value)

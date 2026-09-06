@@ -36,26 +36,6 @@ services:
       timeout: 3s
       retries: 5
 
-  # ========== 搜索引擎 ==========
-  elasticsearch:
-    image: elasticsearch:8.11.0
-    container_name: lj-elasticsearch
-    restart: unless-stopped
-    environment:
-      - discovery.type=single-node
-      - xpack.security.enabled=false
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ports:
-      - "127.0.0.1:9200:9200"
-      - "127.0.0.1:9300:9300"
-    volumes:
-      - es_data:/usr/share/elasticsearch/data
-    healthcheck:
-      test: ["CMD-SHELL", "curl -s http://localhost:9200/_cluster/health | grep -q '\"status\":\"green\"'"]
-      interval: 10s
-      timeout: 10s
-      retries: 10
-
   # ========== 消息队列 ==========
   rabbitmq:
     image: rabbitmq:3.12-management-alpine
@@ -101,22 +81,21 @@ services:
       - ALIPAY_NOTIFY_URL=${ALIPAY_NOTIFY_URL:-}
       - ALIPAY_RETURN_URL=${ALIPAY_RETURN_URL:-}
       - ALIPAY_CALLBACK_URL=${ALIPAY_CALLBACK_URL:-}
-      - FRONTEND_URL=${FRONTEND_URL:-http://120.27.143.225}
-      - PUBLIC_BASE_URL=${PUBLIC_BASE_URL:-http://120.27.143.225}
+      - FRONTEND_URL=${FRONTEND_URL:-http://121.43.109.230}
+      - PUBLIC_BASE_URL=${PUBLIC_BASE_URL:-http://121.43.109.230}
       # 短信
       - SMS_PROVIDER=${SMS_PROVIDER:-mock}
       - SMS_ALIYUN_ACCESS_KEY_ID=${SMS_ALIYUN_ACCESS_KEY_ID:-}
       - SMS_ALIYUN_ACCESS_KEY_SECRET=${SMS_ALIYUN_ACCESS_KEY_SECRET:-}
       - SMS_ALIYUN_SIGN_NAME=${SMS_ALIYUN_SIGN_NAME:-}
       - SMS_ALIYUN_TEMPLATE_CODE=${SMS_ALIYUN_TEMPLATE_CODE:-}
+      - SMS_GATEWAY_URL=${SMS_GATEWAY_URL:-}
     ports:
       - "127.0.0.1:8000:8000"
     depends_on:
       mysql:
         condition: service_healthy
       redis:
-        condition: service_healthy
-      elasticsearch:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
@@ -171,5 +150,4 @@ services:
 volumes:
   mysql_data:
   redis_data:
-  es_data:
   rabbitmq_data:

@@ -59,9 +59,14 @@ async def lifespan(app: FastAPI):
 
     # 补建索引和新增字段（幂等操作）
     try:
-        from app.core.index_migration import ensure_indexes, ensure_columns
+        from app.core.index_migration import (
+            ensure_case_status_support,
+            ensure_columns,
+            ensure_indexes,
+        )
         ensure_indexes()
         ensure_columns()
+        ensure_case_status_support()
     except Exception:
         pass
 
@@ -103,8 +108,8 @@ app.add_middleware(
         "http://127.0.0.1:80",
         "http://192.168.10.27:3000",
         "http://192.168.10.27:80",
-        "http://120.27.143.225",
-        "http://120.27.143.225:80",
+        "http://121.43.109.230",
+        "http://121.43.109.230:80",
     ],
     allow_origin_regex=r"^https?://([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+(:\d+)?$",
     allow_credentials=True,
